@@ -1,0 +1,12 @@
+body{
+    background-image: url(content/imgs/1716562726205.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#cinta-blanca-transparente{
+    width: 100%;
+    height: auto;
+    background-color:aliceblue;
+}
