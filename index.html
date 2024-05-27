@@ -36,19 +36,19 @@
                         <label for="fotoInput" id="seleccionarFotoLabel">Seleccionar Foto</label>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Ingrese su nombre">
                         </div>
                         <div class="mb-3">
                             <label for="apellido" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                            <input type="text" name="apellido" class="form-control" id="apellido" placeholder="Ingrese su apellido">
                         </div>
                         <div class="mb-3">
                             <label for="documento" class="form-label">Número de Documento</label>
-                            <input type="text" class="form-control" id="documento" style="max-width: 25%; min-width: 20%">
+                            <input type="text" name="DNI" class="form-control" id="documento" style="max-width: 25%; min-width: 20%">
                         </div>
                         <div class="mb-3">
                             <label for="nacionalidad" class="form-label">Nacionalidad</label>
-                            <select class="form-select" id="nacionalidad">
+                            <select class="form-select" id="nacionalidad" name="nacionalidad">
                                 <optgroup label="América">
                                 <option value="Argentina">Argentina</option>
                                 <option value="Brasil">Brasil</option>
@@ -84,11 +84,11 @@
         <h3>Domicilio</h3>
         <div class="mb-3">
             <label for="calle" class="form-label">Calle</label>
-            <input type="text" class="form-control" id="calle" placeholder="Ingrese el nombre de la calle" style="max-width: 50%; min-width: 30%">
+            <input type="text" name="calle" class="form-control" id="calle" placeholder="Ingrese el nombre de la calle" style="max-width: 50%; min-width: 30%">
         </div>
         <div class="mb-3">
             <label for="numero" class="form-label">Número</label>
-            <input type="text" class="form-control" id="numero" placeholder="Ingrese el número">
+            <input type="text" name="numeroCalle" class="form-control" id="numero" placeholder="Ingrese el número">
         </div>
         <div class="mb-3">
             <label for="tipo-vivienda" class="form-label">Tipo de Vivienda</label>
@@ -104,41 +104,41 @@
         <div id="campoCasa" style="display: none;">
             <div class="mb-3">
                 <label for="numeroCasa" class="form-label">Número de Casa</label>
-                <input type="text" class="form-control" id="numeroCasa" placeholder="Ingrese el número de casa">
+                <input type="text" name="numeroCasa" class="form-control" id="numeroCasa" placeholder="Ingrese el número de casa">
             </div>
             <div class="mb-3">
                 <label for="localidad" class="form-label">Localidad</label>
-                <input type="text" class="form-control" id="localidad" placeholder="Ingrese la localidad">
+                <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Ingrese la localidad">
             </div>
             <div class="mb-3">
                 <label for="barrio" class="form-label">Barrio</label>
-                <input type="text" class="form-control" id="barrio" placeholder="Ingrese el barrio">
+                <input type="text" name="barrio" class="form-control" id="barrio" placeholder="Ingrese el barrio">
             </div>
             <div class="mb-3">
                 <label for="provincia" class="form-label">Provincia</label>
-                <input type="text" class="form-control" id="provincia" placeholder="Ingrese la provincia">
+                <input type="text" name="provincia" class="form-control" id="provincia" placeholder="Ingrese la provincia">
             </div>
         </div>
         <div id="campoEdificio" style="display: none;">
             <div class="mb-3">
                 <label for="piso" class="form-label">Piso</label>
-                <input type="text" class="form-control" id="piso" placeholder="Ingrese el piso">
+                <input type="text" name="piso" class="form-control" id="piso" placeholder="Ingrese el piso">
             </div>
             <div class="mb-3">
                 <label for="depto" class="form-label">Depto</label>
-                <input type="text" class="form-control" id="depto" placeholder="Ingrese el departamento">
+                <input type="text" name="depto" class="form-control" id="depto" placeholder="Ingrese el departamento">
             </div>
             <div class="mb-3">
                 <label for="localidad" class="form-label">Localidad</label>
-                <input type="text" class="form-control" id="localidad" placeholder="Ingrese la localidad">
+                <input type="text" name="localidad" class="form-control" id="localidad" placeholder="Ingrese la localidad">
             </div>
             <div class="mb-3">
                 <label for="barrio" class="form-label">Barrio</label>
-                <input type="text" class="form-control" id="barrio" placeholder="Ingrese el barrio">
+                <input type="text" name="barrio" class="form-control" id="barrio" placeholder="Ingrese el barrio">
             </div>
             <div class="mb-3">
                 <label for="provincia" class="form-label">Provincia</label>
-                <input type="text" class="form-control" id="provincia" placeholder="Ingrese la provincia">
+                <input type="text" name="provincia" class="form-control" id="provincia" placeholder="Ingrese la provincia">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Registrarse</button>
