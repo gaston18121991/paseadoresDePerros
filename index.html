@@ -18,16 +18,99 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registroModalLabel">Formulario de Registro</h5>
+                    <h5 class="modal-title" id="registroModalLabel">Inicio de sesión</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Contenido del modal de registro -->
-                    <p>Acá va el formulario</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
+                    <form>
+                        <h3>Datos Personales</h3>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+                        </div>
+                        <div class="mb-3">
+                            <label for="documento" class="form-label">Número de Documento</label>
+                            <input type="text" class="form-control" id="documento" placeholder="Ingrese su número de documento">
+                        </div>
+                        <h3>Datos Personales</h3>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
+        </div>
+        <div class="mb-3">
+            <label for="documento" class="form-label">Número de Documento</label>
+            <input type="text" class="form-control" id="documento" placeholder="##.###.###" maxlength="10">
+        </div>
+        <h3>Domicilio</h3>
+        <div class="mb-3">
+            <label for="tipo-vivienda" class="form-label">Tipo de Vivienda</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoVivienda" id="casa" value="casa">
+                <label class="form-check-label" for="casa">Casa</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipoVivienda" id="edificio" value="edificio">
+                <label class="form-check-label" for="edificio">Edificio</label>
+            </div>
+        </div>
+        <div id="campoCasa" style="display: none;">
+            <div class="mb-3">
+                <label for="numeroCasa" class="form-label">Número de Casa</label>
+                <input type="text" class="form-control" id="numeroCasa" placeholder="Ingrese el número de casa">
+            </div>
+        </div>
+        <div id="campoEdificio" style="display: none;">
+            <div class="mb-3">
+                <label for="piso" class="form-label">Piso</label>
+                <input type="text" class="form-control" id="piso" placeholder="Ingrese el piso">
+            </div>
+            <div class="mb-3">
+                <label for="depto" class="form-label">Depto</label>
+                <input type="text" class="form-control" id="depto" placeholder="Ingrese el departamento">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+</div>
+
+<script>
+    const documentoInput = document.getElementById('documento');
+
+    documentoInput.addEventListener('input', function() {
+        let inputValue = this.value.replace(/\D/g, '');
+        let formattedValue = inputValue.replace(/(\d{2})(\d{3})(\d{3})/, '$1.$2.$3');
+        this.value = formattedValue.substring(0, 10);
+    });
+
+    const casaRadio = document.getElementById('casa');
+    const edificioRadio = document.getElementById('edificio');
+    const campoCasa = document.getElementById('campoCasa');
+    const campoEdificio = document.getElementById('campoEdificio');
+
+    casaRadio.addEventListener('change', function() {
+        if (casaRadio.checked) {
+            campoCasa.style.display = 'block';
+            campoEdificio.style.display = 'none';
+        }
+    });
+
+    edificioRadio.addEventListener('change', function() {
+        if (edificioRadio.checked) {
+            campoEdificio.style.display = 'block';
+            campoCasa.style.display = 'none';
+        }
+    });
+</script>
+                    </form>
                 </div>
             </div>
         </div>
@@ -42,7 +125,7 @@
             </div>
             <div class="modal-body">
                 <!-- Contenido del modal de inicio de sesión -->
-                <form>
+                <form action="">
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
                         <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
