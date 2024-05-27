@@ -32,6 +32,7 @@
                             <canvas id="fotoCanvas" style="display: none"></canvas>
                             <img id="previewFoto" src="#" alt="Vista previa de la foto" style="display: none;">
                         </div>
+                        <input type="hidden" id="fotoCapturada" name="fotoCapturada">
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
@@ -161,6 +162,7 @@
         canvas.height = video.videoHeight;
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
         var fotoURL = canvas.toDataURL('image/png');
+        document.getElementById('fotoCapturada').value = fotoURL;
         preview.src = fotoURL;
         preview.style.display = 'block';
     }
