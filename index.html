@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="cinta-blanca-transparente">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registroModal">Iniciar</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#inicioModal">Iniciar</button>
         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#registroModal">Registrar</button>
     </div>
     <!-- Modal de Registro -->
@@ -18,13 +18,20 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registroModalLabel">Inicio de sesión</h5>
+                    <h5 class="modal-title" id="registroModalLabel">Formulario de Registro</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Contenido del modal de registro -->
                     <form>
                         <h3>Datos Personales</h3>
+                        <div class="mb-3">
+                            <label for="camera">Tomar Foto 4x4:</label>
+                            <video id="camera" width="240" height="240" autoplay></video>
+                            <button onclick="capturarFoto()">Tomar Foto</button>
+                            <canvas id="fotoCanvas" style="display: none"></canvas>
+                            <img id="previewFoto" src="#" alt="Vista previa de la foto" style="display: none;">
+                        </div>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
@@ -35,22 +42,52 @@
                         </div>
                         <div class="mb-3">
                             <label for="documento" class="form-label">Número de Documento</label>
-                            <input type="text" class="form-control" id="documento" placeholder="Ingrese su número de documento">
+                            <input type="text" class="form-control" id="documento" style="max-width: 25%; min-width: 20%">
                         </div>
-                        <h3>Datos Personales</h3>
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
-        </div>
-        <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido">
-        </div>
-        <div class="mb-3">
-            <label for="documento" class="form-label">Número de Documento</label>
-            <input type="text" class="form-control" id="documento" placeholder="##.###.###" maxlength="10">
-        </div>
+                        <div class="mb-3">
+                            <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                            <select class="form-select" id="nacionalidad">
+                                <optgroup label="América">
+                                <option value="Argentina">Argentina</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="Estados Unidos">Estados Unidos</option>
+                                <option value="México">México</option>
+                                <option value="Paraguay">Paraguay</option>
+                                <option value="República Dominicana">República Dominicana</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Venezuela">Venezuela</option>
+                                </optgroup>
+                                <optgroup label="Asia">
+                                    <option value="China">China</option>
+                                    <option value="Japón">Japón</option>
+                                    <option value="Korea del Norte">Korea del Norte</option>
+                                    <option value="Korea del Sur">Korea del Sur</option>
+                                    <option value="Qatar">Qatar</option>
+                                    <option value="Rusia">Rusia</option>
+                                </optgroup>
+                                <optgroup label="Europa">
+                                <option value="España">España</option>
+                                <option value="Francia">Francia</option>
+                                <option value="Inglaterra">Inglaterra</option>
+                                <option value="Italia">Italia</option>
+                                <option value="Países Bajos">Países Bajos</option>
+                                <option value="Portugal">Portugal</option>
+                                <option value="Ucrania">Ucrania</option>
+                                </optgroup>
+                            </select>
+                        </div>
         <h3>Domicilio</h3>
+        <div class="mb-3">
+            <label for="calle" class="form-label">Calle</label>
+            <input type="text" class="form-control" id="calle" placeholder="Ingrese el nombre de la calle" style="max-width: 50%; min-width: 30%">
+        </div>
+        <div class="mb-3">
+            <label for="numero" class="form-label">Número</label>
+            <input type="text" class="form-control" id="numero" placeholder="Ingrese el número">
+        </div>
         <div class="mb-3">
             <label for="tipo-vivienda" class="form-label">Tipo de Vivienda</label>
             <div class="form-check">
@@ -67,6 +104,18 @@
                 <label for="numeroCasa" class="form-label">Número de Casa</label>
                 <input type="text" class="form-control" id="numeroCasa" placeholder="Ingrese el número de casa">
             </div>
+            <div class="mb-3">
+                <label for="localidad" class="form-label">Localidad</label>
+                <input type="text" class="form-control" id="localidad" placeholder="Ingrese la localidad">
+            </div>
+            <div class="mb-3">
+                <label for="barrio" class="form-label">Barrio</label>
+                <input type="text" class="form-control" id="barrio" placeholder="Ingrese el barrio">
+            </div>
+            <div class="mb-3">
+                <label for="provincia" class="form-label">Provincia</label>
+                <input type="text" class="form-control" id="provincia" placeholder="Ingrese la provincia">
+            </div>
         </div>
         <div id="campoEdificio" style="display: none;">
             <div class="mb-3">
@@ -77,12 +126,46 @@
                 <label for="depto" class="form-label">Depto</label>
                 <input type="text" class="form-control" id="depto" placeholder="Ingrese el departamento">
             </div>
+            <div class="mb-3">
+                <label for="localidad" class="form-label">Localidad</label>
+                <input type="text" class="form-control" id="localidad" placeholder="Ingrese la localidad">
+            </div>
+            <div class="mb-3">
+                <label for="barrio" class="form-label">Barrio</label>
+                <input type="text" class="form-control" id="barrio" placeholder="Ingrese el barrio">
+            </div>
+            <div class="mb-3">
+                <label for="provincia" class="form-label">Provincia</label>
+                <input type="text" class="form-control" id="provincia" placeholder="Ingrese la provincia">
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
 </div>
 
 <script>
+    const video = document.getElementById('camera');
+    const canvas = document.getElementById('fotoCanvas');
+    const preview = document.getElementById('previewFoto');
+    
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+        video.srcObject = stream;
+    })
+    .catch(function(error) {
+        console.log('Error al acceder a la cámara: ' + error);
+    });
+
+    function capturarFoto() {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        var fotoURL = canvas.toDataURL('image/png');
+        preview.src = fotoURL;
+        preview.style.display = 'block';
+    }
+        /*____________Hasta aquí la función*/
+
     const documentoInput = document.getElementById('documento');
 
     documentoInput.addEventListener('input', function() {
@@ -90,6 +173,7 @@
         let formattedValue = inputValue.replace(/(\d{2})(\d{3})(\d{3})/, '$1.$2.$3');
         this.value = formattedValue.substring(0, 10);
     });
+
 
     const casaRadio = document.getElementById('casa');
     const edificioRadio = document.getElementById('edificio');
@@ -116,32 +200,32 @@
         </div>
     </div>
     <!-- Modal de Inicio -->
-<div class="modal fade" id="inicioModal" tabindex="-1" aria-labelledby="inicioModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="inicioModalLabel">Inicio de Sesión</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Contenido del modal de inicio de sesión -->
-                <form action="">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+    <div class="modal fade" id="inicioModal" tabindex="-1" aria-labelledby="inicioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="inicioModalLabel">Inicio de Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Contenido del modal de inicio de sesión -->
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>
