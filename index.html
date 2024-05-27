@@ -28,11 +28,12 @@
                         <div class="mb-3">
                             <label for="camera">Tomar Foto 4x4:</label>
                             <video id="camera" width="240" height="240" autoplay></video>
-                            <button onclick="capturarFoto()">Tomar Foto</button>
+                            <button onclick="capturarFoto(event)">Tomar Foto</button>
                             <canvas id="fotoCanvas" style="display: none"></canvas>
                             <img id="previewFoto" src="#" alt="Vista previa de la foto" style="display: none;">
                         </div>
-                        <input type="hidden" id="fotoCapturada" name="fotoCapturada">
+                        <input type="file" id="fotoInput" name="foto" style="display: none">
+                        <label for="fotoInput" id="seleccionarFotoLabel">Seleccionar Foto</label>
                         <div class="mb-3">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
@@ -157,15 +158,48 @@
         console.log('Error al acceder a la cámara: ' + error);
     });
 
-    function capturarFoto() {
+    function capturarFoto(event) {
+        event.preventDefault(); // Detener la acción predeterminada del botón para evitar que se cierre el modal
+    
+        var canvas = document.getElementById('fotoCanvas');
+        var video = document.getElementById('camera');
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
         var fotoURL = canvas.toDataURL('image/png');
-        document.getElementById('fotoCapturada').value = fotoURL;
-        preview.src = fotoURL;
-        preview.style.display = 'block';
+        var ctx = canvas.getContext('2d');
+
+        // Dibujar un fondo blanco en el canvas
+        ctx.fillStyle = '#FFFFFF'; // Color blanco
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+        // Convertir la imagen en un Blob
+        var byteCharacters = atob(fotoURL.split(',')[1]);
+        var byteNumbers = new Array(byteCharacters.length);
+        for (var i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        var byteArray = new Uint8Array(byteNumbers);
+        var blob = new Blob([byteArray], { type: 'image/png' });
+    
+        // Crear un archivo a partir del Blob
+        var file = new File([blob], 'foto_4x4.png', { type: 'image/png' });
+    
+        // Asignar el archivo al campo de entrada de tipo file
+        var input = document.getElementById('fotoInput');
+        var fileInput = new DataTransfer();
+        fileInput.items.add(new File([blob], 'foto_4x4.png', { type: 'image/png' }));
+        input.files = fileInput.files;
+    
+        // Mostrar la imagen seleccionada
+        var seleccionarFotoLabel = document.getElementById('seleccionarFotoLabel');
+        seleccionarFotoLabel.textContent = 'Foto seleccionada: foto_4x4.png';
+
+        // Abrir una nueva ventana y mostrar la imagen capturada
+    var nuevaVentana = window.open('', '_blank');
+    nuevaVentana.document.write('<img src="' + fotoURL + '" alt="Foto con fondo blanco">');
     }
+
         /*____________Hasta aquí la función*/
 
     const documentoInput = document.getElementById('documento');
