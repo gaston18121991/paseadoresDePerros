@@ -136,6 +136,17 @@
                     <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota">
                 </div>
                 <div class="form-group">
+                    <label for="raza">Raza:</label>
+                    <select class="form-control" id="raza" name="raza">
+                        <option value="">Selecciona una raza</option>
+                        <option value="labrador">Labrador</option>
+                        <option value="bulldog">Bulldog</option>
+                        <option value="poodle">Poodle</option>
+                        <option value="pastor_aleman">Pastor Alemán</option>
+                        <!-- Agregar más opciones de razas aquí -->
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="foto_mascota">Foto de la Mascota (JPG o PNG):</label>
                     <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" id="foto_mascota" name="foto_mascota">
                 </div>
@@ -178,6 +189,17 @@
                 <div class="form-group">
                     <label for="nombre_mascota">Nombre de la mascota:</label>
                     <input type="text" class="form-control" id="nombre_mascota" name="nombre_mascota">
+                </div>
+                <div class="form-group">
+                    <label for="raza">Raza:</label>
+                    <select class="form-control" id="raza" name="raza">
+                        <option value="">Selecciona una raza</option>
+                        <option value="labrador">Labrador</option>
+                        <option value="bulldog">Bulldog</option>
+                        <option value="poodle">Poodle</option>
+                        <option value="pastor_aleman">Pastor Alemán</option>
+                        <!-- Agregar más opciones de razas aquí -->
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="foto_mascota">Foto de la Mascota (JPG o PNG):</label>
@@ -274,7 +296,16 @@
         }
     });
 //-------------------------------------
-
+function mostrarDatosMascota() {
+    var clienteRadio = document.getElementById('cliente');
+    var datosMascota = document.getElementById('datos_mascota');
+    
+    if (clienteRadio.checked) {
+        datosMascota.style.display = 'block';
+    } else {
+        datosMascota.style.display = 'none';
+    }
+};
 </script>
                     </form>
                 </div>
