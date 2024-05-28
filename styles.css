@@ -5,8 +5,14 @@ body{
     background-attachment: fixed;
 }
 
-#cinta-blanca-transparente{
+#cinta-blanca{
     width: 100%;
     height: auto;
     background-color:aliceblue;
+}
+
+#cinta-naranja{
+    width: 100%;
+    height: auto;
+    background-color:orange;
 }
