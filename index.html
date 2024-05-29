@@ -129,7 +129,7 @@
                     <label class="form-check-label" for="cliente">Cliente</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo_usuario" id="paseador" value="paseador">
+                    <input class="form-check-input" type="radio" name="tipo_usuario" id="paseador1" value="paseador" onchange="mostrarDatosPaseador1()">
                     <label class="form-check-label" for="paseador">Paseador</label>
                 </div>
             </div>
@@ -154,7 +154,40 @@
                     <label for="foto_mascota">Foto de la Mascota (JPG o PNG):</label>
                     <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" id="foto_mascota" name="foto_mascota">
                 </div>
+                <div class="form-group">
+                    <label for="alto">Alto:</label>
+                    <input type="number" class="form-control" id="alto" placeholder="Ingrese el alto" size="30"><span>cm</span>
+                </div>
+                <div class="form-group">
+                    <label for="ancho">Ancho:</label>
+                    <input type="number" class="form-control" id="ancho" placeholder="Ingrese el ancho"><span>cm</span>
+                </div>
+                <div class="form-group">
+                    <label for="largo">Largo:</label>
+                    <input type="number" class="form-control" id="largo" placeholder="Ingrese el largo"><span>cm</span>
+                </div>
+                <div class="form-group">
+                    <label for="peso">Peso:</label>
+                    <input type="number" class="form-control" id="peso" placeholder="Ingrese el peso"><span>kg</span>
+                </div>
             </div>
+        </div>
+        <div id="datosPaseador1" class="form-group" style="display: none;">
+            <h3>Paseador</h3>
+            <label for="herramientas">Herramientas de trabajo:</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="correa">
+                <label class="form-check-label" for="correa">Correa</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="collar">
+                <label class="form-check-label" for="collar">Collar</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="bolsas">
+                <label class="form-check-label" for="bolsas">Bolsas para desechos</label>
+            </div>
+            <!-- Agrega más checkboxes según sea necesario -->
         </div>
         <div id="campoEdificio" style="display: none;">
             <div class="mb-3">
@@ -185,7 +218,7 @@
                     <label class="form-check-label" for="cliente">Cliente</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo_usuario" id="paseador" value="paseador">
+                    <input class="form-check-input" type="radio" name="tipo_usuario" id="paseador2" value="paseador" onchange="mostrarDatosPaseador2()">
                     <label class="form-check-label" for="paseador">Paseador</label>
                 </div>
             </div>
@@ -210,7 +243,40 @@
                     <label for="foto_mascota">Foto de la Mascota (JPG o PNG):</label>
                     <input type="file" accept=".jpg, .jpeg, .png" class="form-control-file" id="foto_mascota" name="foto_mascota">
                 </div>
+                <div class="form-group">
+                    <label for="alto">Alto:</label>
+                    <input type="number" class="form-control" id="alto" placeholder="Ingrese el alto"><span>cm</span>
+                </div>
+                <div class="form-group">
+                    <label for="ancho">Ancho:</label>
+                    <input type="number" class="form-control" id="ancho" placeholder="Ingrese el ancho"><span>cm</span>
+                </div>
+                <div class="form-group">
+                    <label for="largo">Largo:</label>
+                    <input type="number" class="form-control" id="largo" placeholder="Ingrese el largo"><span>cm</span>
+                </div>
+                <div class="form-group">
+                    <label for="peso">Peso:</label>
+                    <input type="number" class="form-control" id="peso" placeholder="Ingrese el peso"><span>kg</span>
+                </div>
             </div>
+        </div>
+        <div id="datosPaseador2"  class="form-group" style="display: none;">
+            <h3>Paseador</h3>
+            <label for="herramientas">Herramientas de trabajo:</label>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="cinturonCorrea">
+                <label class="form-check-label" for="correa">Cinturón-Correa</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="collar">
+                <label class="form-check-label" for="collar">Collar</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="bolsas">
+                <label class="form-check-label" for="bolsas">Bolsas para desechos</label>
+            </div>
+            <!-- Agrega más checkboxes según sea necesario -->
         </div>
         <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
@@ -304,24 +370,46 @@
 function mostrarDatosMascota() {
     var clienteRadio = document.getElementById('cliente');
     var datosMascota = document.getElementById('datos_mascota');
+    var datosPaseador = document.getElementById('datosPaseador1');
     
     if (clienteRadio.checked) {
         datosMascota.style.display = 'block';
-    } else {
-        datosMascota.style.display = 'none';
+        datosPaseador.style.display = 'none';
     }
 }
 
 function mostrarDatosMascota2() {
     var clienteRadio = document.getElementById('cliente2');
     var datosMascota = document.getElementById('datos_mascota2');
+    var datosPaseador = document.getElementById('datosPaseador2');
     
     if (clienteRadio.checked) {
         datosMascota.style.display = 'block';
-    } else {
-        datosMascota.style.display = 'none';
+        datosPaseador.style.display = 'none';
     }
 }
+
+function mostrarDatosPaseador1(){
+var paseadorRadio = document.getElementById('paseador1');
+var datosPaseador = document.getElementById('datosPaseador1');
+var datosMascota = document.getElementById('datos_mascota');
+
+if (paseadorRadio.checked){
+    datosPaseador.style.display = 'block';
+    datosMascota.style.display = 'none';
+}
+}
+
+function mostrarDatosPaseador2(){
+    var paseadorRadio = document.getElementById('paseador2');
+    var datosPaseador = document.getElementById('datosPaseador2');
+    var datosMascota = document.getElementById('datos_mascota2');
+    
+    if (paseadorRadio.checked){
+        datosPaseador.style.display = 'block';
+        datosMascota.style.display = 'none';
+    }
+    }
 </script>
                     </form>
                 </div>
