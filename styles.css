@@ -1,12 +1,11 @@
-body{
+body {
     width: 100%;
     height: 100%;
     background-image: url(content/imgs/1717095384702.png);
     background-repeat: no-repeat;
-    background-size:cover;
-    background-attachment:fixed;
-    position: relative;
-}
+    background-size: cover;
+    background-attachment: fixed;
+  }
 
 #cinta-blanca{
     width: 100%;
