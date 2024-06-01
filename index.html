@@ -25,7 +25,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Contenido del modal de registro -->
                     <form>
                         <h3>Datos Personales</h3>
                         <div class="mb-3">
@@ -152,6 +151,21 @@
                 </div>
             </div>
             <div id="datos_mascota" style="display: none;">
+                <h3>Datos de Cuenta Bancaria</h3>
+                    <label for="account-holder-name">Nombre del Titular de la Cuenta:</label>
+                    <input type="text" id="account-holder-name" required>
+                    
+                    <label for="account-number">Número de Cuenta Bancaria:</label>
+                    <input type="text" id="account-number" required>
+                    
+                    <label for="bank-name">Nombre del Banco:</label>
+                    <input type="text" id="bank-name" required>
+                    
+                    <label for="account-type">Tipo de Cuenta:</label>
+                    <select id="account-type" required>
+                        <option value="cuenta corriente">Cuenta Corriente</option>
+                        <option value="caja de ahorros">Caja de Ahorros</option>
+                    </select>
                 <h3>Datos de la Mascota</h3>
                 <div class="form-group">
                     <label for="nombre_mascota">Nombre de la mascota:</label>
@@ -297,6 +311,21 @@
                 </div>
             </div>
             <div id="datos_mascota2" style="display: none;">
+                <h3>Datos de Cuenta Bancaria</h3>
+                    <label for="account-holder-name">Nombre del Titular de la Cuenta:</label>
+                    <input type="text" id="account-holder-name" required>
+                    
+                    <label for="account-number">Número de Cuenta Bancaria:</label>
+                    <input type="text" id="account-number" required>
+                    
+                    <label for="bank-name">Nombre del Banco:</label>
+                    <input type="text" id="bank-name" required>
+                    
+                    <label for="account-type">Tipo de Cuenta:</label>
+                    <select id="account-type" required>
+                        <option value="cuenta corriente">Cuenta Corriente</option>
+                        <option value="caja de ahorros">Caja de Ahorros</option>
+                    </select>
                 <h3>Datos de la Mascota</h3>
                 <div class="form-group">
                     <label for="nombre_mascota">Nombre de la mascota:</label>
@@ -570,6 +599,7 @@ function mostrarDatosPaseador2(){
                             <label for="password" class="form-label">Contraseña</label>
                             <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
                         </div>
+                        <span>¿No tenés cuenta?</span><span><a href="#" id="link-registrar">Creala aquí</a></span>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -579,5 +609,16 @@ function mostrarDatosPaseador2(){
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#link-registrar').click(function() {
+            $('#inicioModal').modal('hide');
+            $('#registroModal').modal('show');
+        });
+    });
+</script>
 </body>
 </html>
